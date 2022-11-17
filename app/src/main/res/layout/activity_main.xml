@@ -9,16 +9,66 @@
     android:backgroundTintMode="screen"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="333dp"
-        android:layout_marginEnd="69dp"
-        android:text="HELLO USER"
-        android:textSize="48sp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="216dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:insetLeft="5dp"
+            android:insetRight="5dp"
+            android:text="Prev"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="216dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:insetLeft="5dp"
+            android:insetRight="5dp"
+            android:text="Next"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/numberlist"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:text="1"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/go"
+            android:layout_width="216dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:insetLeft="5dp"
+            android:insetRight="5dp"
+            android:text="GO"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/Listview"
+        android:layout_width="409dp"
+        android:layout_height="638dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
