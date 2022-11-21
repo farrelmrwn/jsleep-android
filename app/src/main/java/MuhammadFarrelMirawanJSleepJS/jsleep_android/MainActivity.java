@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -21,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import com.google.gson.Gson;
 
-import model.Room;
+import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Room;
 
 public class MainActivity extends AppCompatActivity {
 

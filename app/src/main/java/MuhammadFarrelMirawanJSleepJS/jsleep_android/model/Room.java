@@ -1,4 +1,4 @@
-package model;
+package MuhammadFarrelMirawanJSleepJS.jsleep_android.model;
 
 import java.util.ArrayList;
 import java.util.Date;

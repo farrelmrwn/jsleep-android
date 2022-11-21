@@ -1,4 +1,4 @@
-package model;
+package MuhammadFarrelMirawanJSleepJS.jsleep_android.model;
 
 public class Renter extends Serializable{
     public String username;
