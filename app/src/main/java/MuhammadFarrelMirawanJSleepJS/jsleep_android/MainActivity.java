@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.user_button){
-            Intent move = new Intent(MainActivity.this, AboutMe.class);
+            Intent move = new Intent(MainActivity.this, AboutMeActivity.class);
             startActivity(move);
             return true;
         }

@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     EditText username,password;
     Context mContext;
+    public static Account accLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Account account = requestAccount();
+                Account account = requestLogin();
             }
         });
     }
@@ -54,15 +56,35 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     Account account;
                     account = response.body();
-                    System.out.println("Berhasil");
                     System.out.println(account.toString());
                 }
             }
 
             @Override
             public void onFailure(Call<Account> call, Throwable t) {
-                System.out.println("GAGAL");
                 Toast.makeText(mContext, "no Account id = 0", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+    protected Account requestLogin(){
+        mApiService.login(username.getText().toString(), password.getText().toString()).enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                if(response.isSuccessful()){
+                    Account account;
+                    account = response.body();
+                    System.out.println(account.toString());
+                    accLogin = account;
+                    Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent move = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(move);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                Toast.makeText(mContext, "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
         return null;

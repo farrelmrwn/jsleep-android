@@ -10,7 +10,7 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/fillname"
         android:layout_width="215dp"
         android:layout_height="64dp"
         android:layout_marginStart="100dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress3"
+        android:id="@+id/fillemail"
         android:layout_width="217dp"
         android:layout_height="56dp"
         android:layout_marginStart="101dp"
@@ -37,10 +37,10 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/fillname" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/fillPassword"
         android:layout_width="217dp"
         android:layout_height="62dp"
         android:layout_marginStart="100dp"
@@ -52,10 +52,10 @@
         android:inputType="textVisiblePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
+        app:layout_constraintTop_toBottomOf="@+id/fillemail" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/RegisterButton"
         android:layout_width="114dp"
         android:layout_height="50dp"
         android:layout_marginStart="148dp"
@@ -64,6 +64,6 @@
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/fillPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
