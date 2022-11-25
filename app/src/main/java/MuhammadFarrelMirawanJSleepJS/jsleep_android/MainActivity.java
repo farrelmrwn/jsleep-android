@@ -19,10 +19,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import com.google.gson.Gson;
 
+import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Account;
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Room;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static Account accLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

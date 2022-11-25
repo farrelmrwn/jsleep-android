@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     EditText username,password;
     Context mContext;
-    public static Account accLogin;
 
 
     @Override
@@ -75,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                     Account account;
                     account = response.body();
                     System.out.println(account.toString());
-                    accLogin = account;
+                    MainActivity.accLogin = account;
                     Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();
                     Intent move = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(move);
