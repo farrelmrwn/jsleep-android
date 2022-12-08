@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#976868"
-    android:backgroundTint="#75B8B0"
-    android:backgroundTintMode="screen"
-    tools:context=".CreateRoom">
+    android:background="#151C47"
+    tools:context=".CreateRoomActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -23,6 +21,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
+            app:cardBackgroundColor="#220567"
             android:layout_height="match_parent">
 
             <LinearLayout
@@ -36,39 +35,61 @@
                     android:layout_height="45dp"
                     android:gravity="center_horizontal"
                     android:text="Create Room"
-                    android:textSize="34sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/NameHotel"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:ems="10"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#30ffffff"
+                    android:drawablePadding="20dp"
                     android:hint="Name"
-                    android:inputType="textEmailAddress" />
+                    android:textColorHint="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/PriceHotel"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:ems="10"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#30ffffff"
+                    android:drawablePadding="20dp"
                     android:hint="Price"
-                    android:inputType="textEmailAddress" />
+                    android:textColorHint="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/AddressHotel"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:ems="10"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#30ffffff"
+                    android:drawablePadding="20dp"
                     android:hint="Address"
-                    android:inputType="textEmailAddress" />
+                    android:textColorHint="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/SizeHotel"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:ems="10"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#30ffffff"
+                    android:drawablePadding="20dp"
                     android:hint="Size"
-                    android:inputType="textEmailAddress" />
+                    android:textColorHint="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -76,6 +97,7 @@
                     android:layout_height="34dp"
                     android:background="#0288D1"
                     android:text="Facility"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp" />
 
@@ -85,25 +107,28 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/CheckAC"
+                        android:id="@+id/ACCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="AC" />
+                        android:text="AC"
+                        android:textColor="#FFFFFF" />
 
                     <CheckBox
-                        android:id="@+id/CheckWiFi"
+                        android:id="@+id/WiFiCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="WiFi" />
+                        android:text="WiFi"
+                        android:textColor="#FAFAFA" />
 
                     <CheckBox
-                        android:id="@+id/CheckBathTub"
+                        android:id="@+id/BathTubCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BathTub" />
+                        android:text="BathTub"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -112,25 +137,28 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/CheckBalcony"
+                        android:id="@+id/BalconyCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Balcony" />
+                        android:text="Balcony"
+                        android:textColor="#FBFBFB" />
 
                     <CheckBox
-                        android:id="@+id/CheckRestaurant"
+                        android:id="@+id/RestaurantCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Restaurant" />
+                        android:text="Restaurant"
+                        android:textColor="#FFFEFE" />
 
                     <CheckBox
-                        android:id="@+id/CheckRefrigirator"
+                        android:id="@+id/RefrigeratorCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Refrigerator" />
+                        android:text="Refrigerator"
+                        android:textColor="#FAFAFA" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -139,18 +167,20 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/CheckSwimming"
+                        android:id="@+id/SwimmingCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Swimming Pool" />
+                        android:text="Swimming Pool"
+                        android:textColor="#F6F5F5" />
 
                     <CheckBox
-                        android:id="@+id/CheckFitness"
+                        android:id="@+id/FitnessCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Fitness Center" />
+                        android:text="Fitness Center"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,14 +194,16 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="City"
+                        android:textColor="#F6EFEF"
                         android:textSize="24sp" />
 
                     <Spinner
                         android:id="@+id/SpinnerCity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="JAKARTA"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:backgroundTint="#FFFFFF"
+                        android:contentDescription="JAKARTA" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -185,14 +217,16 @@
                         android:layout_height="59dp"
                         android:layout_weight="1"
                         android:text="Bed Type"
+                        android:textColor="#FDFDFD"
                         android:textSize="24sp" />
 
                     <Spinner
                         android:id="@+id/SpinnerBed"
                         android:layout_width="match_parent"
                         android:layout_height="64dp"
-                        android:contentDescription="SINGLE"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:backgroundTint="#F6EEEE"
+                        android:contentDescription="SINGLE" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -203,9 +237,13 @@
         android:layout_width="389dp"
         android:layout_height="64dp"
         android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="11dp"
+        android:layout_marginBottom="28dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 

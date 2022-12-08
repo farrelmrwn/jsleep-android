@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class AboutMeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TextView name, email, balance;
+        ImageView logo;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
         mApiService = UtilsApi.getApiService();
@@ -34,6 +36,7 @@ public class AboutMeActivity extends AppCompatActivity {
         name = findViewById(R.id.showname);
         email = findViewById(R.id.showemail);
         balance = findViewById(R.id.showbalance);
+        logo = findViewById(R.id.logoJsleep);
         name.setText(MainActivity.accLogin.name);
         email.setText(MainActivity.accLogin.email);
         balance.setText(String.valueOf(MainActivity.accLogin.balance));
@@ -57,6 +60,7 @@ public class AboutMeActivity extends AppCompatActivity {
             CardShow.setVisibility(CardView.VISIBLE);
             CardRenterButton.setVisibility(CardView.GONE);
             CardFill.setVisibility(CardView.GONE);
+            logo.setVisibility(ImageView.VISIBLE);
 
             ShowNameRenter.setText(MainActivity.accLogin.renter.username);
             ShowAddressRenter.setText(MainActivity.accLogin.renter.address);
@@ -66,13 +70,14 @@ public class AboutMeActivity extends AppCompatActivity {
             CardShow.setVisibility(CardView.GONE);
             CardRenterButton.setVisibility(CardView.VISIBLE);
             CardFill.setVisibility(CardView.GONE);
+            logo.setVisibility(ImageView.VISIBLE);
             RegisterRenter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     CardShow.setVisibility(CardView.GONE);
                     CardRenterButton.setVisibility(CardView.GONE);
                     CardFill.setVisibility(CardView.VISIBLE);
-
+                    logo.setVisibility(ImageView.GONE);
                     ButtonRegist.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -88,6 +93,7 @@ public class AboutMeActivity extends AppCompatActivity {
                             CardShow.setVisibility(CardView.GONE);
                             CardRenterButton.setVisibility(CardView.VISIBLE);
                             CardFill.setVisibility(CardView.GONE);
+                            logo.setVisibility(ImageView.VISIBLE);
                         }
                     });
                 }

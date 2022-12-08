@@ -6,24 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import com.google.gson.Gson;
 
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Account;
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Room;
@@ -37,59 +33,70 @@ public class MainActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     public static Account accLogin;
-    static ArrayList<Room> listRoom = new ArrayList<Room>();
-    int current;
-    Button next;
-    Button prev;
-    ListView viewlist;
-    List<Room> acc;
-    List<Room> temp;
-    List<Room> disp;
+    public static List<Room> getRoom;
+    ListView listView;
+    EditText numberlist;
+    Button next, prev, go;
+    int currentPage = 1, pageSize = 15;
+    public static int clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTheme(R.style.Theme_Jsleepandroid);
-        ArrayList<Room> ListRoom = new ArrayList<>();
-        ArrayList<String> listId = new ArrayList<>();
-        current = 0;
-        mContext = this;
         mApiService = UtilsApi.getApiService();
-        viewlist = findViewById(R.id.Listview);
-        viewlist.setOnClickListener(this::onClickItem);
-        acc = getRoomList(0, 10);
+        mContext = this;
         next = findViewById(R.id.next);
         prev = findViewById(R.id.prev);
-        prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(current <= 1){
-                    current = 1;
-                    Toast.makeText(mContext, "First page", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                current--;
-                disp = getRoomList(current, 3);
-                ArrayAdapter<Room> adapter = new ArrayAdapter<Room>(mContext, android.R.layout.simple_list_item_1, disp);
-                viewlist.setAdapter(adapter);
-            }
-        });
+        go = findViewById(R.id.go);
+        numberlist = findViewById(R.id.numberlist);
+        listView = findViewById(R.id.Listview);
+        listView.setOnItemClickListener(this::onItemClick);
+        getAllRoom();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (temp.size() > current){
-                    current = 1;
-                    return;
-                }
-                current++;
-                acc = getRoomList(current - 1, 1);
-                Toast.makeText(mContext, "Page " + current, Toast.LENGTH_SHORT).show();
+                currentPage++;
+                getAllRoom();
+                numberlist.setText(String.valueOf(currentPage));
+                Toast.makeText(mContext, "Page " + currentPage, Toast.LENGTH_SHORT).show();
             }
         });
-
-
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentPage <= 1){
+                    currentPage = 1;
+                    Toast.makeText(mContext, "First page", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(currentPage > 1){
+                    currentPage--;
+                    getAllRoom();
+                    numberlist.setText(String.valueOf(currentPage));
+                    Toast.makeText(mContext, "Page " + currentPage, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentPage = Integer.parseInt(numberlist.getText().toString());
+                getAllRoom();
+            }
+        });
     }
+
+    private void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Intent move = new Intent();
+        move.setClass(this, DetailRoomActivity.class);
+        move.putExtra("Position", position);
+        move.putExtra("id", id);
+        startActivity(move);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -106,38 +113,31 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         else if(item.getItemId() == R.id.add_button){
-            Intent move = new Intent(MainActivity.this, CreateRoom.class);
+            Intent move = new Intent(MainActivity.this, CreateRoomActivity.class);
             startActivity(move);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    protected List<Room> getRoomList(int page, int pageSize){
-        mApiService.getAllRoom(page, pageSize).enqueue(new Callback<List<Room>>() {
+    protected void getAllRoom(){
+        mApiService.getAllRoom(currentPage - 1, pageSize).enqueue(new Callback<List<Room>>() {
             @Override
             public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
                 if (response.isSuccessful()){
-                    ArrayList<String> temp = new ArrayList<>();
-                    disp = response.body();
-                    for (Room i : disp){
-                        temp.add(i.name);
+                    getRoom = (ArrayList<Room>) response.body();
+                    ArrayList<String> getroom = new ArrayList<>();
+                    assert getRoom != null;
+                    for (Room room : getRoom){
+                        getroom.add(room.name);
                     }
-                    System.out.println(disp);
-                    ArrayAdapter<String> Adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, temp);
-                    ListView listview = findViewById(R.id.Listview);
-                    listview.setAdapter(Adapter);
-                    System.out.println("Success");
-                    Toast.makeText(mContext, "Success", Toast.LENGTH_SHORT).show();
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, getroom);
+                    listView.setAdapter(adapter);
                 }
             }
-
             @Override
             public void onFailure(Call<List<Room>> call, Throwable t) {
-                t.printStackTrace();
-                System.out.println("Failed");
-                Toast.makeText(mContext, "Failed", Toast.LENGTH_SHORT).show();
+                System.out.println(t.toString());
             }
         });
-        return null;
     }
 }

@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#976868"
-    android:backgroundTint="#75B8B0"
-    android:backgroundTintMode="screen"
+    android:background="#151C47"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -48,7 +46,8 @@
             android:ems="10"
             android:inputType="number"
             android:text="1"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/go"
@@ -59,16 +58,37 @@
             android:insetRight="5dp"
             android:text="GO"
             android:textStyle="bold" />
+
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/Listview"
-        android:layout_width="409dp"
-        android:layout_height="638dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="410dp"
+        android:layout_height="643dp"
+        android:layout_marginTop="8dp"
+        android:background="#F4EDED"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ListView
+            android:id="@+id/Listview"
+            android:layout_width="409dp"
+            android:layout_height="638dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="442dp"
+        android:layout_height="257dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintVertical_bias="0.654"
+        app:srcCompat="@drawable/cloud" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

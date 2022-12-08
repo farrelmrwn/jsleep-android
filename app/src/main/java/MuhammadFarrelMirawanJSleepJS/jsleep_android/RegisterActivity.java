@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         mApiService = UtilsApi.getApiService();
         mContext = this;
         Button login = findViewById(R.id.RegisterButton);
+        Button back = findViewById(R.id.backButton);
         name = findViewById(R.id.fillname);
         email = findViewById(R.id.fillemail);
         password = findViewById(R.id.fillPassword);
@@ -36,6 +37,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Account account = requestRegister();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move1 = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(move1);
             }
         });
     }
@@ -52,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
                     startActivity(move);
                 }
             }
-
             @Override
             public void onFailure(Call<Account> call, Throwable t) {
                 Toast.makeText(mContext, "Account Already Registered", Toast.LENGTH_SHORT).show();
