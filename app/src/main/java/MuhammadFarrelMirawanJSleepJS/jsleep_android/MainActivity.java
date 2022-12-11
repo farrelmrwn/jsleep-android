@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         move.setClass(this, DetailRoomActivity.class);
         move.putExtra("Position", position);
         move.putExtra("id", id);
+        clicked = position;
         startActivity(move);
     }
 
@@ -102,6 +104,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menutop, menu);
+        MenuItem AddBox = menu.findItem(R.id.add_button);
+        if(accLogin.renter == null){
+            AddBox.setVisible(false);
+        }
+        else {
+            AddBox.setVisible(true);
+        }
         return true;
     }
 

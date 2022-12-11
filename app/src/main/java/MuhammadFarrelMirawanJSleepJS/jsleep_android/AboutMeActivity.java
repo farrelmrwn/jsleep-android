@@ -28,6 +28,8 @@ public class AboutMeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TextView name, email, balance;
+        EditText showamount;
+        Button TopUp;
         ImageView logo;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
@@ -55,6 +57,16 @@ public class AboutMeActivity extends AppCompatActivity {
         EditText RenterNumber = findViewById(R.id.RenterNumber);
         Button ButtonRegist = findViewById(R.id.ButtonRegist);
         Button ButtonCancel = findViewById(R.id.ButtonCancel);
+
+        showamount = findViewById(R.id.showamount);
+        TopUp = findViewById(R.id.TopUp);
+
+        TopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TopUpAcc(MainActivity.accLogin.id, Double.parseDouble(showamount.getText().toString()));
+            }
+        });
 
         if (MainActivity.accLogin.renter != null){
             CardShow.setVisibility(CardView.VISIBLE);
@@ -85,6 +97,7 @@ public class AboutMeActivity extends AppCompatActivity {
                                     RenterAddress.getText().toString(), RenterNumber.getText().toString());
                             Intent move = new Intent(AboutMeActivity.this, AboutMeActivity.class);
                             startActivity(move);
+                            recreate();
                         }
                     });
                     ButtonCancel.setOnClickListener(new View.OnClickListener(){
@@ -115,6 +128,25 @@ public class AboutMeActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Renter> call, Throwable t) {
                 Toast.makeText(mContext, "Renter Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+    protected Renter TopUpAcc(int id, double balance){
+        mApiService.topUp(id, balance).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()){
+                    MainActivity.accLogin.balance = MainActivity.accLogin.balance + balance;
+                    System.out.println("Top Up Berhasil");
+                    Toast.makeText(mContext, "Top Up Successful", Toast.LENGTH_SHORT).show();
+                    recreate();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Toast.makeText(mContext, "Top Up Gagal", Toast.LENGTH_SHORT).show();
             }
         });
         return null;

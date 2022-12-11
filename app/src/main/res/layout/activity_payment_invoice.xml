@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#151C47"
-    tools:context=".DetailRoomActivity">
+    tools:context=".PaymentInvoiceActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:gravity="center_horizontal"
-                    android:text="Detail Room"
+                    android:text="BOOKING INVOICE"
                     android:textColor="#FFFFFF"
                     android:textSize="34sp"
                     android:textStyle="bold" />
@@ -77,10 +77,10 @@
 
                                     <TextView
                                         android:id="@+id/NameDetail"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="78dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Name"
+                                        android:text="Hotel Name"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
 
@@ -105,7 +105,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Bed Type"
+                                        android:text="Address"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
 
@@ -114,7 +114,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Bed Type"
+                                        android:text="Address"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
@@ -130,7 +130,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Size"
+                                        android:text="From"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
 
@@ -139,7 +139,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Size"
+                                        android:text="From"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
@@ -155,7 +155,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Price"
+                                        android:text="To"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
 
@@ -164,7 +164,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Price"
+                                        android:text="To"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
@@ -179,7 +179,7 @@
                                         android:id="@+id/AdressDetail"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Address"
+                                        android:text="Total"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
 
@@ -187,7 +187,7 @@
                                         android:id="@+id/ShowTotal"
                                         android:layout_width="match_parent"
                                         android:layout_height="59dp"
-                                        android:text="Address"
+                                        android:text="Total"
                                         android:textColor="#FFFFFF"
                                         android:textSize="28sp" />
                                 </LinearLayout>
@@ -197,8 +197,33 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="34dp"
                                     android:background="#0288D1"
-                                    android:text="Facility"
+                                    android:text="Do you want to proceed"
                                     android:textAlignment="center"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="413dp"
+                                android:layout_height="207dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/BalanceInvoice"
+                                    android:layout_width="56dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Your Balance :"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="24sp" />
+
+                                <TextView
+                                    android:id="@+id/ShowBalanceInvoice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Balance"
                                     android:textColor="#FFFFFF"
                                     android:textSize="24sp" />
                             </LinearLayout>
@@ -211,115 +236,26 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
-                        android:id="@+id/ACCheck"
+                    <Button
+                        android:id="@+id/BackButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="AC"
-                        android:textColor="#FFFFFF" />
+                        android:text="Cancel" />
 
-                    <CheckBox
-                        android:id="@+id/WiFiCheck"
+                    <Button
+                        android:id="@+id/ContinueButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="WiFi"
-                        android:textColor="#FAFAFA" />
-
-                    <CheckBox
-                        android:id="@+id/BathTubCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="BathTub"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/BalconyCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Balcony"
-                        android:textColor="#FBFBFB" />
-
-                    <CheckBox
-                        android:id="@+id/RestaurantCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Restaurant"
-                        android:textColor="#FFFEFE" />
-
-                    <CheckBox
-                        android:id="@+id/RefrigeratorCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Refrigerator"
-                        android:textColor="#FAFAFA" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="51dp"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/SwimmingCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Swimming Pool"
-                        android:textColor="#F6F5F5" />
-
-                    <CheckBox
-                        android:id="@+id/FitnessCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Fitness Center"
-                        android:textColor="#FFFFFF" />
+                        android:text="Continue" />
                 </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="389dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="11dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <Button
-            android:id="@+id/ButtonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cancel" />
-
-        <Button
-            android:id="@+id/ButtonBook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Book" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
