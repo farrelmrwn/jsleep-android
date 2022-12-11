@@ -22,6 +22,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * PaymentInvoiceActivity Class
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Show the invoice detail of the payment of the room
+ */
 public class PaymentInvoiceActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;

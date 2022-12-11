@@ -18,8 +18,15 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-
+/**
+ * BaseApiService
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Used to connect to backend
+ */
 public interface BaseApiService {
+
     @GET("account/{id}")
     Call<Account> getAccount(@Path("id") int id);
     @POST("account/login")
@@ -57,6 +64,10 @@ public interface BaseApiService {
                                 @Query("roomId") int roomId,
                                 @Query("from") String from,
                                 @Query("to") String to);
+    @GET("payment/getRenterPayment")
+    Call<List<Payment>> getRenterPayment(@Query("renterId") int renterId,
+                                        @Query("page") int page,
+                                        @Query("pageSize") int pageSize);
     @POST("payment/{id}/accept")
     Call<Boolean> accept(@Path("id") int id);
 

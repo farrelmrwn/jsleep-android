@@ -22,6 +22,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+/**
+ * About me Activity class
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Show the account and check whether already have a renter or not
+ * Can also do Renter Registration
+ */
 public class AboutMeActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
@@ -29,7 +37,7 @@ public class AboutMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         TextView name, email, balance;
         EditText showamount;
-        Button TopUp;
+        Button TopUp, SeeBookButton, LogOut;
         ImageView logo;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
@@ -60,6 +68,26 @@ public class AboutMeActivity extends AppCompatActivity {
 
         showamount = findViewById(R.id.showamount);
         TopUp = findViewById(R.id.TopUp);
+        SeeBookButton = findViewById(R.id.SeeBookButton);
+        LogOut = findViewById(R.id.LogOut);
+
+        LogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Logging out", Toast.LENGTH_SHORT).show();
+                MainActivity.accLogin = null;
+                Intent logout = new Intent(AboutMeActivity.this, LoginActivity.class);
+                startActivity(logout);
+            }
+        });
+
+        SeeBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent move2 = new Intent(AboutMeActivity.this, BuyerListActivity.class);
+                startActivity(move2);
+            }
+        });
 
         TopUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +141,13 @@ public class AboutMeActivity extends AppCompatActivity {
             });
         }
     }
+    /**
+     * request Renter
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * Used to get the list of renter from the array
+     */
     protected Renter requestRenter(int id, String username, String address, String phoneNumber){
         mApiService.registerRenter(id, username, address, phoneNumber).enqueue(new Callback<Renter>() {
             @Override
@@ -132,6 +167,13 @@ public class AboutMeActivity extends AppCompatActivity {
         });
         return null;
     }
+    /**
+     * TopUpAcc Class
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * Used to increase account balance
+     */
     protected Renter TopUpAcc(int id, double balance){
         mApiService.topUp(id, balance).enqueue(new Callback<Boolean>() {
             @Override

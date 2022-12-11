@@ -18,6 +18,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * LoginActivity
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Class to login to account via email and password
+ */
+
 public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     EditText username,password;

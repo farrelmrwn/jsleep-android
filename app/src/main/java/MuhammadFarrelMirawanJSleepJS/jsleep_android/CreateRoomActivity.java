@@ -26,6 +26,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+/**
+ * CreateRoomActivity Class
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Used to create a new room
+ */
 public class CreateRoomActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
@@ -109,6 +116,13 @@ public class CreateRoomActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * request room
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * The room that is created will be put in room.json and also
+     */
     protected Room requestRoom(int accountId, String name, int size, int price, ArrayList<Facility> facility, City city, String address, BedType bedType){
         mApiService.createRoom(accountId, name, size, price, facility, city, address, bedType).enqueue(new Callback<Room>() {
             @Override

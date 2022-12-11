@@ -1,5 +1,12 @@
 package MuhammadFarrelMirawanJSleepJS.jsleep_android.model;
 
+/**
+ * Invoice
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Used to set Room Rating and Payment Status
+ */
 public class Invoice extends Serializable{
     public int buyerId;
     public int renterId;

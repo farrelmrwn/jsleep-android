@@ -15,11 +15,19 @@ import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Room;
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.request.BaseApiService;
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.request.UtilsApi;
 
+/**
+ * DetailRoomActivity class
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Show the detail of the room
+ */
+
 public class DetailRoomActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Button cancel, book;
     Context mContext;
-    public static Room ClickedRoom = MainActivity.getRoom.get(MainActivity.clicked);
+    static Room ClickedRoom = MainActivity.getRoom.get(MainActivity.clicked);
     TextView ShowName;
     TextView ShowBedType;
     TextView ShowSize;

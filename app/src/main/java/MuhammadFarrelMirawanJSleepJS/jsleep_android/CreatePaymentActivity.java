@@ -16,6 +16,14 @@ import java.util.Calendar;
 
 import MuhammadFarrelMirawanJSleepJS.jsleep_android.model.Room;
 
+/**
+ * CreatePaymentActivity Class
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Used to select the date of the stay using date picker
+ * Have from and to
+ */
 public class CreatePaymentActivity extends AppCompatActivity {
     public static String toDate;
     public static String fromDate;

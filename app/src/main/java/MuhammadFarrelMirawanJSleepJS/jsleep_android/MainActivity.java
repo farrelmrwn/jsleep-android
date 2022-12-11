@@ -30,17 +30,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Main Activity Class
+ *
+ * @author Farrel Muhammad
+ *
+ * Show the list of room that has been created in a list view.
+ * Also contain menu top
+ */
 public class MainActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     public static Account accLogin;
     public static List<Room> getRoom;
+    static List<String> getName = new ArrayList<>();
     ListView listView;
     EditText numberlist;
     Button next, prev, go;
     int currentPage = 1, pageSize = 15;
     public static int clicked;
 
+    /**
+     * On Create
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * Have parameter and also paginate
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,16 +105,30 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * On Item Click Method
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * If inside of list view is clicked will be directed to detailroomactivity
+     */
     private void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         Intent move = new Intent();
         move.setClass(this, DetailRoomActivity.class);
         move.putExtra("Position", position);
         move.putExtra("id", id);
-        clicked = position;
+        DetailRoomActivity.ClickedRoom = getRoom.get(position);
         startActivity(move);
     }
 
 
+    /**
+     * OnCreateOptionsMenu
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * Have menu top
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * OnOptionsItemSelected
+     *
+     * @author Muhammad Farrel Mirawan
+     *
+     * Intent for menu if clicked
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.user_button){
@@ -128,6 +165,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    /**
+     * getAllRoom Method
+     * Used to get all of the room from the array
+     * @author Muhammad Farrel Mirawan
+     * @return list of room
+     * @see Room
+     */
     protected void getAllRoom(){
         mApiService.getAllRoom(currentPage - 1, pageSize).enqueue(new Callback<List<Room>>() {
             @Override
@@ -139,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
                     for (Room room : getRoom){
                         getroom.add(room.name);
                     }
+                    getName.addAll(getroom);
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, getroom);
                     listView.setAdapter(adapter);
                 }

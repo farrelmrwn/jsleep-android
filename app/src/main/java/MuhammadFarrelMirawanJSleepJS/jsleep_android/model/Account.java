@@ -1,5 +1,12 @@
 package MuhammadFarrelMirawanJSleepJS.jsleep_android.model;
 
+/**
+ * Account
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Account variable and toString
+ */
 public class Account extends Serializable{
     public String name;
     public String password;

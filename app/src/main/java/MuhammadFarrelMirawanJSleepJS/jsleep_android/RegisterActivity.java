@@ -17,6 +17,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * RegisterActivity
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * To Register to account by putting username, password, and email
+ */
 public class RegisterActivity extends AppCompatActivity {
     BaseApiService mApiService;
     EditText name,email,password;

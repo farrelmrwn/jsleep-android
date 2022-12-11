@@ -3,6 +3,13 @@ package MuhammadFarrelMirawanJSleepJS.jsleep_android.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Room
+ *
+ * @author Muhammad Farrel Mirawan
+ *
+ * Used to store Room variable
+ */
 public class Room extends Serializable{
     public int accountId;
     public String name;
