@@ -37,7 +37,7 @@ public class AboutMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         TextView name, email, balance;
         EditText showamount;
-        Button TopUp, SeeBookButton, LogOut;
+        Button TopUp, SeeBookButton, LogOut, BackButton;
         ImageView logo;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
@@ -70,6 +70,16 @@ public class AboutMeActivity extends AppCompatActivity {
         TopUp = findViewById(R.id.TopUp);
         SeeBookButton = findViewById(R.id.SeeBookButton);
         LogOut = findViewById(R.id.LogOut);
+        BackButton = findViewById(R.id.ButtonBack);
+
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(AboutMeActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+
 
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
